@@ -3,26 +3,24 @@
 }
 
 body {
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    background: #f6f5f7;
-    font-family: sans-serif;
-    min-height: 100%;
-    margin: 10%;
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: radial-gradient(circle at top, #f0f8ff 0%, #f5f5f7 44%, #ececf0 100%);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    background: #f6f5f7;
+    position: relative;
+    width: min(1100px, 94vw);
+    min-height: 680px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(14px);
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 14px 28px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
 }
 
 .sign-up,
@@ -30,113 +28,83 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    width: 50%;
     height: 100%;
-    transition: all 0.6s ease-in-out;
+    transition: transform 0.55s ease, opacity 0.55s ease;
 }
 
 .sign-up {
-    width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
 .sign-in {
-    width: 50%;
     z-index: 2;
 }
 
 form {
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 50px;
     height: 100%;
+    padding: 44px 42px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 h1 {
-    font-weight: bold;
     margin: 0;
+    color: #1d1d1f;
+    letter-spacing: -0.02em;
 }
 
 p {
+    margin: 12px 0 18px;
+    color: #6e6e73;
     font-size: 14px;
-    font-weight: 100;
-    line-height: 20px;
-    letter-spacing: 0.5px;
-    margin: 15px 0 20px;
 }
 
 input,
 select {
-    background: #eee;
-    padding: 12px 15px;
-    margin: 8px 15px;
-    width: 500px;
-    border-radius: 5px;
-    border: none;
+    width: min(420px, 100%);
+    margin: 6px 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #d2d2d7;
+    background: #fff;
     outline: none;
+    font-size: 14px;
 }
 
 a {
-    color: purple;
-    font-size: 14px;
+    margin: 12px 0 2px;
+    color: #0071e3;
     text-decoration: none;
-    margin: 15px 0;
+    font-size: 14px;
 }
 
 button {
+    margin-top: 12px;
+    border: none;
+    border-radius: 999px;
+    height: 40px;
+    padding: 0 24px;
+    background: #1d1d1f;
     color: #fff;
-    background: black;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 12px 55px;
-    margin: 20px;
-    border-radius: 20px;
-    border: 1px solid black;
-    outline: none;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
+    font-weight: 600;
+    letter-spacing: 0.02em;
     cursor: pointer;
-}
-
-button:active {
-    transform: scale(0.90);
-}
-
-.sign-in button:hover {
-    background-color:  #c0c0c0; 
-    color: #fff;
-}
-.sign-up button:hover {
-    background-color:  #c0c0c0; 
-    color: #fff;
 }
 
 .guest-button {
-    color: #fff;
-    background-color: #0A0A7C; 
-    border: 1px solid white; 
-    padding: 12px 55px;
-    margin-top: 10px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+    background: #0071e3;
 }
-
-.guest-button:hover {
-    background-color: grey; 
-    color: #fff;
-}
-
 
 #signIn,
 #signUp {
-    background-color: transparent;
-    border: 2px solid #fff;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .container.right-panel-active .sign-in {
@@ -146,7 +114,7 @@ button:active {
 .container.right-panel-active .sign-up {
     transform: translateX(100%);
     opacity: 1;
-    z-index: 5;
+    z-index: 4;
 }
 
 .overlay-container {
@@ -156,7 +124,7 @@ button:active {
     width: 50%;
     height: 100%;
     overflow: hidden;
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.55s ease;
     z-index: 100;
 }
 
@@ -166,13 +134,14 @@ button:active {
 
 .overlay {
     position: relative;
-    color: #fff;
     left: -100%;
-    height: 100%;
     width: 200%;
-    background-image: url('/Image/LoginPage.jpg');
-    transform: translate(0);
-    transition: transform 0.6s ease-in-out;
+    height: 100%;
+    color: #fff;
+    background:
+        linear-gradient(135deg, rgba(0, 113, 227, 0.78), rgba(66, 133, 244, 0.66)),
+        url("/Image/LoginPage.jpg") center/cover no-repeat;
+    transition: transform 0.55s ease;
 }
 
 .container.right-panel-active .overlay {
@@ -182,38 +151,58 @@ button:active {
 .overlay-left,
 .overlay-right {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    text-align: center;
     top: 0;
-    height: 100%;
     width: 50%;
-    transform: translateX(0);
-    transition: transform 0.6s ease-in-out;
+    height: 100%;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.overlay-right {
+    right: 0;
 }
 
 #backButton {
     position: absolute;
     top: 20px;
     left: 20px;
-    font-size: 24px; 
-    color: black; 
+    z-index: 9;
+    color: #1d1d1f;
+    font-size: 22px;
     cursor: pointer;
-    z-index: 1000; 
 }
 
-.overlay-right {
-    right: 0;
-    transform: translateX(0);
-}
+@media (max-width: 900px) {
+    .container {
+        min-height: 780px;
+    }
 
-.container.right-panel-active .overlay-left {
-    transform: translateX(0);
-}
+    .overlay-container {
+        display: none;
+    }
 
-.container.right-panel-active .overlay-right {
-    transform: translateX(20%);
+    .sign-in,
+    .sign-up,
+    .container.right-panel-active .sign-in,
+    .container.right-panel-active .sign-up {
+        width: 100%;
+        transform: none;
+        opacity: 1;
+    }
+
+    .sign-up {
+        display: none;
+    }
+
+    .container.right-panel-active .sign-up {
+        display: block;
+    }
+
+    .container.right-panel-active .sign-in {
+        display: none;
+    }
 }
